@@ -1,13 +1,19 @@
+import TodoBtn from "./TodoBtn"
 
 
 export default function TodoList({todoItem}) {
   return (
-    <ul>
-        {
-            todoItem.length && todoItem.map(m=>{
-           return <li key = {m}>{m}</li>
-            })
-        }
-    </ul>
+    <>
+        {todoItem.length > 0 ? <ul>
+         {
+               (todoItem.map((e, i)=>{
+                return (<li key={i}>{e}  <TodoBtn todo = {todoItem} id={i}/></li>  
+               )
+            }))
+           
+         }
+         
+        </ul>:''}
+    </>
   )
 }

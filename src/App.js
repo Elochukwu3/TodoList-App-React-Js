@@ -4,21 +4,25 @@ import './App.css';
 import TodoList from './Compontents/TodoList';
 
 function App() {
-  const initiateTodo =()=>{
+  // const initiateTodo =()=>{
 
-  }
-  const [todo, setTodo] = useState(initiateTodo);
-  let todos;
-  function addTodo() {
-// todos[...todo]
-setTodo(todos)
+  // }
+  const [todo, setTodo] = useState("");
+  const [todoList, setTodoList] = useState([]);
 
+  function addTodo(e) {
+    e.preventDefault()
+   setTodoList(todoList => [...todoList, todo])
+   console.log(todoList);
+   
   }
   return (
     <div className="App">
-      <input  value={todo} className="toInput" onChange={(e)=>setTodo(e.target.value)}/>
-        <button onClick={addTodo}>Add Todo</button>
-      <TodoList todoItem={todos}/>
+      <form onSubmit={addTodo}>
+      <input  value={todo} className="toInput" onChange={(e)=>setTodo(e.target.value)} required/>
+        <button type='submit'>Add Todo</button>
+      </form>
+      <TodoList todoItem={todoList} />
     </div>
   );
 }
