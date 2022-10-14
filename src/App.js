@@ -2,17 +2,21 @@
 import { useState } from 'react';
 import './App.css';
 import TodoList from './Compontents/TodoList';
+let next = 2;
+const initia =[
+  {id:1,
+  text:"hello",
+done:false
+}
 
+]
 function App() {
-  // const initiateTodo =()=>{
-
-  // }
   const [todo, setTodo] = useState("");
-  const [todoList, setTodoList] = useState([]);
+  const [todoList, setTodoList] = useState(initia);
 
   function addTodo(e) {
     e.preventDefault()
-   setTodoList(todoList => [...todoList, todo])
+   setTodoList( [...todoList, {id: next++, text: todo, done:false,}])
    console.log(todoList);
    
   }
@@ -28,7 +32,7 @@ function App() {
       <input  value={todo} className="toInput" onChange={(e)=>setTodo(e.target.value)} required/>
         <button type='submit' className='btnOne'>Add Todo</button>
       </form>
-      <TodoList todoItem={todoList} change={deleteBtn}/>
+      {/* <TodoList todoItem={todoList} change={deleteBtn}/> */}
     
     </div>
   );
