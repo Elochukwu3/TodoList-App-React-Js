@@ -1,5 +1,12 @@
 .App {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+}
+.AppInner{
+  max-width: 400px;
+ width: 100%;
+  border: 2px solid red;
 }
 button{
   padding: .5rem 1rem;
@@ -10,30 +17,22 @@ button{
   opacity: .4;
   font-size: .8rem;
 }
-input{
+/* input{
   max-width: 400px;
   width: 100%;
   padding: .4rem .8rem;
   border-radius: .3rem;
-  /* outline: none; */
+  outline: none;
   border: 1px solid blue;
   caret-color: rgb(162, 162, 226);
   margin-right: 10px;
   font-size: .9rem;
-}
+} */
 input:valid ~ button{
   opacity: 1;
 }
 .btnOne{
   padding: .7rem 1.1rem;
 }
-li{
-  width: 90%;
-  display: flex;
-  /* justify-content: center;
-  gap: 7rem;
-  align-items: center;
-  font-size: 1.5em;
-  padding: .5rem 0; */
-}
+
 
