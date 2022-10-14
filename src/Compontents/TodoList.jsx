@@ -34,6 +34,7 @@ function Task({ todos, onDelete, inputChange }) {
     ? (content = (
         <>
           <input
+          type='text'
             ref={renderCaret}
             value={todos.text}
             onChange={(e) => {
@@ -51,7 +52,7 @@ function Task({ todos, onDelete, inputChange }) {
       ))
     : (content = (
         <>
-          <input value={todos.text}  ref={renderCaret} readOnly/>{" "}
+          <input type='text'value={todos.text}  ref={renderCaret} readOnly/>
           <button
             onClick={() => {
               setEditing(true); 

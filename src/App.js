@@ -39,7 +39,7 @@ function App() {
       <form onSubmit={addTodo}>
         <input
           value={todo}
-          className="toInput"
+          className="toDoInput"
           onChange={(e) => setTodo(e.target.value)}
           required
         />
