@@ -7,8 +7,9 @@ export default function TodoList({todoItem, change}) {
         {todoItem.length > 0 ? <ul>
          {
                (todoItem.map((e, i)=>{
-                return (<li key={e.id}>{e}
-                <button onClick={()=>change(e.id)}>Delete</button>
+                const {id, text, done} = e;
+                return (<li key={id}>{text}
+                <button onClick={()=>change(id)}>Delete</button>
                 </li>  
                )
             }))

@@ -5,7 +5,7 @@ import TodoList from './Compontents/TodoList';
 let next = 2;
 const initia =[
   {id:1,
-  text:"hello",
+  text:"I am good",
 done:false
 }
 
@@ -17,12 +17,13 @@ function App() {
   function addTodo(e) {
     e.preventDefault()
    setTodoList( [...todoList, {id: next++, text: todo, done:false,}])
-   console.log(todoList);
+   setTodo('')
    
   }
   function deleteBtn(p) {
-    setTodoList(todoList.filter((e, i)=>{
-      return i !== p;
+    setTodoList(todoList.filter((e)=>{
+      const{id} = e;
+      return id !== p;
     }))
   }
   return (
@@ -32,7 +33,7 @@ function App() {
       <input  value={todo} className="toInput" onChange={(e)=>setTodo(e.target.value)} required/>
         <button type='submit' className='btnOne'>Add Todo</button>
       </form>
-      {/* <TodoList todoItem={todoList} change={deleteBtn}/> */}
+      <TodoList todoItem={todoList} change={deleteBtn}/>
     
     </div>
   );
