@@ -5,7 +5,7 @@ export default function TodoList({ todoItem, change, inputChange }) {
     <>
       {todoItem.length > 0 ? (
         <ul>
-          {todoItem.map((eachTodo, i) => {
+          {todoItem.map((eachTodo) => {
             const { id } = eachTodo;
             return (
               <li key={id}>
@@ -51,6 +51,7 @@ function Task({ todos, onDelete, inputChange }) {
       ));
   return (
     <>
+    <input type="checkbox" onChange={(e)=>{inputChange({...todos, done: e.target.checked})}}/>
       <p>{content}</p>
       <button onClick={() => onDelete(todos.id)}>Delete</button>
     </>
