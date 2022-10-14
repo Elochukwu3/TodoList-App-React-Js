@@ -19,6 +19,17 @@ function App() {
    setTodoList( [...todoList, {id: next++, text: todo, done:false,}])
    setTodo('')
    
+  };
+  
+  function handleAddTodo(todo) {
+    setTodoList([
+      ...todoList,
+      {
+        id: next++,
+        text: todo,
+        done: false
+      }
+    ]);
   }
   function deleteBtn(p) {
     setTodoList(todoList.filter((e)=>{
@@ -33,7 +44,7 @@ function App() {
       <input  value={todo} className="toInput" onChange={(e)=>setTodo(e.target.value)} required/>
         <button type='submit' className='btnOne'>Add Todo</button>
       </form>
-      <TodoList todoItem={todoList} change={deleteBtn}/>
+      <TodoList todoItem={todoList} change={deleteBtn} inputChange={handleAddTodo}/>
     
     </div>
   );

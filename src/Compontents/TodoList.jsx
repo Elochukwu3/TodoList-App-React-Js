@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function TodoList({ todoItem, change }) {
+export default function TodoList({ todoItem, change, inputChange }) {
   return (
     <>
       {todoItem.length > 0 ? (
@@ -9,7 +9,7 @@ export default function TodoList({ todoItem, change }) {
             const { id } = eachTodo;
             return (
               <li key={id}>
-                <Task onDelete={change} todos={eachTodo} />
+                <Task onDelete={change} todos={eachTodo} inputChange={inputChange}/>
               </li>
             );
           })}
@@ -21,13 +21,13 @@ export default function TodoList({ todoItem, change }) {
   );
 }
 
-function Task({ todos, onDelete }) {
+function Task({ todos, onDelete, inputChange }) {
   const [validating, setValidating] = useState(false);
   let content;
   validating
     ? (content = (
         <>
-          <input value={todos.text} />{" "}
+          <input value={todos.text} onChange={()=> inputChange}/>{" "}
           <button
             onClick={() => {
               setValidating(false);
