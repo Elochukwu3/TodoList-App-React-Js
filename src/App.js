@@ -21,15 +21,15 @@ function App() {
    
   };
   
-  function handleAddTodo(todo) {
-    setTodoList([
-      ...todoList,
-      {
-        id: next++,
-        text: todo,
-        done: false
-      }
-    ]);
+  function handleAddTodo(nextTodo) {
+      setTodoList(todoList.map(t => {
+        if (t.id === nextTodo.id) {
+          return nextTodo;
+        } else {
+          return t;
+        }
+      }));
+   
   }
   function deleteBtn(p) {
     setTodoList(todoList.filter((e)=>{

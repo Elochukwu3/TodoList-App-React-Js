@@ -27,7 +27,7 @@ function Task({ todos, onDelete, inputChange }) {
   validating
     ? (content = (
         <>
-          <input value={todos.text} onChange={()=> inputChange}/>{" "}
+          <input value={todos.text} onChange={e=>{inputChange({...todos, text:e.target.value})} }/>
           <button
             onClick={() => {
               setValidating(false);
