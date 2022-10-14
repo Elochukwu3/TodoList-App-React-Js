@@ -1,3 +1,4 @@
+import { useState } from "react";
 
 
 
@@ -6,10 +7,10 @@ export default function TodoList({todoItem, change}) {
     <>
         {todoItem.length > 0 ? <ul>
          {
-               (todoItem.map((e, i)=>{
-                const {id, text, done} = e;
-                return (<li key={id}>{text}
-                <button onClick={()=>change(id)}>Delete</button>
+               (todoItem.map((eachTodo, i)=>{
+                const {id, text, done} = eachTodo;
+                return (<li key={id}>
+               <Task onDelete={change} todos={eachTodo}/>
                 </li>  
                )
             }))
@@ -19,4 +20,20 @@ export default function TodoList({todoItem, change}) {
         </ul>:''}
     </>
   )
+}
+
+function Task({todos, onDelete}) {
+    const[validating, setValidating] = useState(false);
+    let content;
+   validating ?content=(<><input value={todos.text}/>  <button onClick={()=>{setValidating(true)}} >save</button></>):
+   content = (<><input value={todos.text} readOnly/> <button onClick={()=>{setValidating(false)}} >Edit</button></>);
+    return(
+        <>
+        <p>{content}</p>
+       
+        
+        <button onClick={()=>onDelete(todos.id)}>Delete</button>
+        </>
+    )
+    
 }
