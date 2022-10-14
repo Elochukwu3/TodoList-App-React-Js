@@ -18,9 +18,10 @@ function App() {
   }
   return (
     <div className="App">
+        <h1>Todo Application</h1>
       <form onSubmit={addTodo}>
       <input  value={todo} className="toInput" onChange={(e)=>setTodo(e.target.value)} required/>
-        <button type='submit'>Add Todo</button>
+        <button type='submit' className='btnOne'>Add Todo</button>
       </form>
       <TodoList todoItem={todoList} />
     </div>
