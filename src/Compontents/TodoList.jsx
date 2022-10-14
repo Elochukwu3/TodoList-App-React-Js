@@ -26,14 +26,11 @@ export default function TodoList({ todoItem, change, inputChange }) {
 }
 
 function Task({ todos, onDelete, inputChange }) {
-  const [validating, setValidating] = useState(false);
+  const [isEditing, setEditing] = useState(false);
   const renderCaret = useRef();//useref for making reference to the input tag
   let content;
-  const show =()=>{
-    renderCaret.current.focus();
-  }
-
-  validating
+//if its user wants to edit;
+  isEditing
     ? (content = (
         <>
           <input
@@ -45,7 +42,7 @@ function Task({ todos, onDelete, inputChange }) {
           />
           <button
             onClick={() => {
-              setValidating(false);
+              setEditing(false);
             }}
           >
             Save
@@ -54,11 +51,11 @@ function Task({ todos, onDelete, inputChange }) {
       ))
     : (content = (
         <>
-          <input value={todos.text} readOnly/>{" "}
+          <input value={todos.text}  ref={renderCaret} readOnly/>{" "}
           <button
             onClick={() => {
-              setValidating(true);
-              show()
+              setEditing(true); 
+              renderCaret.current.focus();
             //onclick focus
             }}
           >
