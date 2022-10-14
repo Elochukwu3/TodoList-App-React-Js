@@ -9,7 +9,11 @@ export default function TodoList({ todoItem, change, inputChange }) {
             const { id } = eachTodo;
             return (
               <li key={id}>
-                <Task onDelete={change} todos={eachTodo} inputChange={inputChange}/>
+                <Task
+                  onDelete={change}
+                  todos={eachTodo}
+                  inputChange={inputChange}
+                />
               </li>
             );
           })}
@@ -23,12 +27,22 @@ export default function TodoList({ todoItem, change, inputChange }) {
 
 function Task({ todos, onDelete, inputChange }) {
   const [validating, setValidating] = useState(false);
-  const inputCaret = useRef('')
+  const renderCaret = useRef();//useref for making reference to the input tag
   let content;
+  const show =()=>{
+    renderCaret.current.focus();
+  }
+
   validating
     ? (content = (
         <>
-          <input ref={inputCaret} value={todos.text} onChange={e=>{inputChange({...todos, text:e.target.value})}} />
+          <input
+            ref={renderCaret}
+            value={todos.text}
+            onChange={(e) => {
+              inputChange({ ...todos, text: e.target.value });
+            }}
+          />
           <button
             onClick={() => {
               setValidating(false);
@@ -40,23 +54,32 @@ function Task({ todos, onDelete, inputChange }) {
       ))
     : (content = (
         <>
-          <input value={todos.text} readOnly />{" "}
+          <input value={todos.text} readOnly/>{" "}
           <button
             onClick={() => {
               setValidating(true);
-              console.log(inputCaret.current);
-              inputCaret.current.focus()
+              show()
+            //onclick focus
             }}
           >
             Edit
           </button>
         </>
       ));
+
+
   return (
     <>
-    <input type="checkbox" onChange={(e)=>{inputChange({...todos, done: e.target.checked})}}/>
+      <input
+        type="checkbox"
+        onChange={(e) => {
+          inputChange({ ...todos, done: e.target.checked });
+        }}
+      />
+
       <p>{content}</p>
       <button onClick={() => onDelete(todos.id)}>Delete</button>
+
     </>
   );
 }
