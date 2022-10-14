@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 export default function TodoList({ todoItem, change, inputChange }) {
   return (
@@ -23,11 +23,12 @@ export default function TodoList({ todoItem, change, inputChange }) {
 
 function Task({ todos, onDelete, inputChange }) {
   const [validating, setValidating] = useState(false);
+  const inputCaret = useRef('')
   let content;
   validating
     ? (content = (
         <>
-          <input value={todos.text} onChange={e=>{inputChange({...todos, text:e.target.value})} }/>
+          <input ref={inputCaret} value={todos.text} onChange={e=>{inputChange({...todos, text:e.target.value})}} />
           <button
             onClick={() => {
               setValidating(false);
@@ -43,6 +44,8 @@ function Task({ todos, onDelete, inputChange }) {
           <button
             onClick={() => {
               setValidating(true);
+              console.log(inputCaret.current);
+              inputCaret.current.focus()
             }}
           >
             Edit
