@@ -81,7 +81,7 @@ function Task({ todos, onDelete, inputChange }) {
      </label>
 
       <>{content}</>
-      <button onClick={() => onDelete(todos.id)}>Delete</button>
+      <button onClick={() => onDelete(todos.id)} style={{background: 'red'}}>Delete</button>
 
     </>
   );

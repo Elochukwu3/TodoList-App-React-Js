@@ -39,9 +39,21 @@ function App() {
       <form onSubmit={addTodo}>
         <input
           value={todo}
-          className="toDoInput"
           onChange={(e) => setTodo(e.target.value)}
           required
+          style={{
+           display:'block',
+          width: '90%',
+          fontSize:' 1.15rem',
+          padding:' 0.8rem 1.5rem',
+          color: '#000',
+          background: '#ffff',
+          borderRadius: '0.5rem',
+          boxShadow:'0px 0px 4px rgba(58, 130, 230, 0.75)',
+          margin:'1.5rem auto',
+          overflowX:' scroll',
+          }}
+          className='inputOne'
         />
         <button type="submit" className="btnOne">
           Add Todo
