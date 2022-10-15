@@ -40,6 +40,7 @@ function Task({ todos, onDelete, inputChange }) {
             onChange={(e) => {
               inputChange({ ...todos, text: e.target.value });
             }}
+            className="inputText"
           />
           <button
             onClick={() => {
@@ -52,7 +53,7 @@ function Task({ todos, onDelete, inputChange }) {
       ))
     : (content = (
         <>
-          <input type='text'value={todos.text}  ref={renderCaret} readOnly/>
+          <input type='text'value={todos.text}  ref={renderCaret}  className="inputText" readOnly/>
           <button
             onClick={() => {
               setEditing(true); 
@@ -69,6 +70,7 @@ function Task({ todos, onDelete, inputChange }) {
   return (
     <>
      <div>
+     <span class="bubble business"></span>
      <input
         type="checkbox"
         onChange={(e) => {
