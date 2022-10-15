@@ -53,7 +53,13 @@ li{
 .inputText{
   padding: .4rem 1rem;
   width: 60%;
-  border: unset;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+outline: none;
+border: unset;
+background: none;
+cursor: initial;
 }
 input[type=radio], input[type=checkbox] {
   display: none;
@@ -79,13 +85,11 @@ input[type=radio], input[type=checkbox] {
   border-radius: 50%;
   transition: 0.2s ease-in-out;
 }
+
  input:checked ~ .bubble::after {
   width: 11px;
   height: 11px;
   opacity: 1;
 }
- .bubble.business::after {
-  background: rgba( 58, 130, 230, 0.75);
-  box-shadow:  0px 0px 4px rgba( 58, 130, 230, 0.75);
-}
+ 
 

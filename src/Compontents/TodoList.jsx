@@ -69,15 +69,16 @@ function Task({ todos, onDelete, inputChange }) {
 
   return (
     <>
-     <div>
-     <span class="bubble business"></span>
+     <label>
+     
      <input
         type="checkbox"
         onChange={(e) => {
           inputChange({ ...todos, done: e.target.checked });
         }}
       />
-     </div>
+      <span className="bubble business"></span>
+     </label>
 
       <>{content}</>
       <button onClick={() => onDelete(todos.id)}>Delete</button>
